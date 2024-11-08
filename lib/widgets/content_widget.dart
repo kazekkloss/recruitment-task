@@ -42,13 +42,13 @@ class _ContentWidgetState extends State<ContentWidget> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          _headerSection(), // Nagłówek przyczepiony na stałe na górze
+          _headerSection(),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.only(top: 22),
               child: MasonryGridView.count(
-                padding: const EdgeInsets.only(left: 18, right: 18),
-                controller: _gridScrollController, // Dodajemy ScrollController
+                padding: const EdgeInsets.only(left: 18, right: 18, bottom: 20),
+                controller: _gridScrollController,
                 crossAxisCount: isLandscape ? 3 : 2,
                 mainAxisSpacing: 10,
                 crossAxisSpacing: 10,

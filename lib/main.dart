@@ -17,11 +17,32 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SizeConfig.init(context);
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: AppTheme.lightTheme,
-      home: const HomePage(),
-    );
+    final orientationNotifier = ValueNotifier(MediaQuery.of(context).orientation);
+
+    return ValueListenableBuilder<Orientation>(
+        valueListenable: orientationNotifier,
+        builder: (context, orientation, child) {
+          SizeConfig.init(context);
+          return MaterialApp(
+            title: 'Flutter Demo',
+            theme: AppTheme.lightTheme,
+            home: Stack(
+              children: [
+                const HomePage(),
+                Positioned.fill(
+                  child: IgnorePointer(
+                    child: Opacity(
+                      opacity: 0,
+                      child: Image.asset(
+                        'assets/images/ekran1.png',
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
+        });
   }
 }

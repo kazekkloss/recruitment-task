@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:task/config/size_config.dart';
+import 'package:task/themes/app_colors.dart';
 import 'package:video_player/video_player.dart';
 import 'dart:ui';
 
@@ -37,17 +38,17 @@ class _AppBarWidgetState extends State<AppBarWidget> {
 
     final bool isLandscape = SizeConfig.isLandscape;
 
-    final double expandedHeight = isLandscape ? 79.h : 48.5.h;
+    final double expandedHeight = isLandscape ? max(21.h, kToolbarHeight) : 48.5.h;
     final double collapsedHeight = max(
       isLandscape ? 21.h : 10.5.h,
       kToolbarHeight,
     );
 
     return SliverAppBar(
-      backgroundColor: Colors.white,
       expandedHeight: expandedHeight,
       collapsedHeight: collapsedHeight,
-      floating: false,
+      floating: !isLandscape,
+      snap: !isLandscape,
       pinned: true,
       centerTitle: true,
       flexibleSpace: LayoutBuilder(
@@ -64,7 +65,7 @@ class _AppBarWidgetState extends State<AppBarWidget> {
           return Stack(
             children: [
               Container(
-                color: Colors.black,
+                color: AppColors.backgroundPrimary,
               ),
               _leadingAndActions(isLandscape),
               FlexibleSpaceBar(
@@ -107,7 +108,6 @@ class _AppBarWidgetState extends State<AppBarWidget> {
   }
 
   Widget _leadingAndActions(bool isLandscape) {
-    // Adjust spacings based on orientation
     final double topPadding = isLandscape ? 4.h : 8.5.h;
     final double iconSize = isLandscape ? 28 : 30;
     final double menuIconSize = isLandscape ? 30 : 33;

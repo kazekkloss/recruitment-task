@@ -18,7 +18,7 @@ class SizeConfig {
     if (context == null) {
       throw Exception('SizeConfig context has not been set.');
     }
-    return MediaQuery.sizeOf(context).width * (percentage / 100);
+    return MediaQuery.of(context).size.width * (percentage / 100);
   }
 
   static double screenHeightPercentage(num percentage) {
@@ -26,7 +26,7 @@ class SizeConfig {
     if (context == null) {
       throw Exception('SizeConfig context has not been set.');
     }
-    return MediaQuery.sizeOf(context).height * (percentage / 100);
+    return MediaQuery.of(context).size.height * (percentage / 100);
   }
 
   static double screenTextScale(num fontSize) {
@@ -34,7 +34,7 @@ class SizeConfig {
     if (context == null) {
       throw Exception('SizeConfig context has not been set.');
     }
-    return (fontSize / 100) * MediaQuery.sizeOf(context).width;
+    return (fontSize / 100) * MediaQuery.of(context).size.width;
   }
 
   static bool get isLandscape {
@@ -42,6 +42,6 @@ class SizeConfig {
     if (context == null) {
       throw Exception('SizeConfig context has not been set.');
     }
-    return MediaQuery.orientationOf(context) == Orientation.landscape;
+    return MediaQuery.of(context).orientation == Orientation.landscape;
   }
 }

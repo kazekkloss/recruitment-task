@@ -23,7 +23,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Theme.of(context).primaryColor,
+      color: AppColors.bottomNavBackground,
       height: isLandscape ? 21.h : 10.5.h,
       child: Center(
         child: Row(

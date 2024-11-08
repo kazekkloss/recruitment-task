@@ -84,11 +84,12 @@ class _HomePageState extends State<HomePage> {
             body: Stack(
               children: [
                 const ContentWidget(),
-                Positioned(
-                  top: -24,
-                  right: isLandscape ? 56: 18,
-                  child: CircleButton(onTap: _toggleAppBar, isAppBarExpanded: isAppBarExpanded),
-                ),
+                if (!isLandscape)
+                  Positioned(
+                    top: -24,
+                    right: isLandscape ? 56 : 18,
+                    child: CircleButton(onTap: _toggleAppBar, isAppBarExpanded: isAppBarExpanded),
+                  ),
               ],
             ),
           ),
